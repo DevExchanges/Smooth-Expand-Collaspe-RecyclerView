@@ -8,17 +8,17 @@ import android.view.ViewGroup;
 
 import java.util.HashSet;
 
-public class SummonerAdapter extends RecyclerView.Adapter<SummonerAdapter.SummonerHolder> {
+public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.SummonerHolder> {
     private LayoutInflater layoutInflater;
     private HashSet<Integer> mExpandedPositionSet = new HashSet<>();
 
-    public SummonerAdapter(Context context) {
+    public RecyclerViewAdapter(Context context) {
         this.layoutInflater = LayoutInflater.from(context);
     }
 
     @Override
     public SummonerHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View item = layoutInflater.inflate(viewType == 0 ? R.layout.item_ezreal : R.layout.item_jinx, parent, false);
+        View item = layoutInflater.inflate(viewType == 0 ? R.layout.item_odd : R.layout.item_jinx, parent, false);
         return new SummonerHolder(item);
     }
 

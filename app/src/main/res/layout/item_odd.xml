@@ -11,6 +11,7 @@
     android:layout_marginTop="4dp"
     app:expWithParentScroll="true">
 
+    <!-- The visible layout -->
     <RelativeLayout
         android:id="@+id/firstLayer"
         android:layout_width="match_parent"
@@ -22,6 +23,7 @@
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:layout_margin="5dp"
+            android:contentDescription="@null"
             android:scaleType="fitXY"
             android:src="@drawable/ezreal" />
 
@@ -49,6 +51,8 @@
 
     </RelativeLayout>
 
+    <!-- The hidden layout -->
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -57,19 +61,11 @@
         android:padding="10dp">
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Background"
-            android:textColor="@android:color/white"
-            android:textSize="16sp" />
-
-        <TextView
             android:id="@+id/summoner_story_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/ezreal_story"
-            android:textColor="@android:color/white"
-            android:textSize="12sp" />
+            android:textColor="@android:color/white" />
 
     </LinearLayout>
 

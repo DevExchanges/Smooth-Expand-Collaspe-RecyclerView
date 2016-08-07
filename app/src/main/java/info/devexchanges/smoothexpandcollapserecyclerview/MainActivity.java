@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(linearLayoutManager);
 
-        SummonerAdapter summonerAdapter = new SummonerAdapter(this);
-        recyclerView.setAdapter(summonerAdapter);
+        RecyclerViewAdapter recyclerViewAdapter = new RecyclerViewAdapter(this);
+        recyclerView.setAdapter(recyclerViewAdapter);
     }
 }

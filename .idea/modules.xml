@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/SmoothExpandCollapseRecyclerView.iml" filepath="$PROJECT_DIR$/SmoothExpandCollapseRecyclerView.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Smooth-Expand-Collaspe-RecyclerView.iml" filepath="$PROJECT_DIR$/Smooth-Expand-Collaspe-RecyclerView.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>
