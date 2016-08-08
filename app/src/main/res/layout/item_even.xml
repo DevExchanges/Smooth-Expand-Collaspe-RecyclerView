@@ -5,10 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_gravity="center"
-    android:layout_marginBottom="4dp"
-    android:layout_marginLeft="8dp"
-    android:layout_marginRight="8dp"
-    android:layout_marginTop="4dp"
     app:expWithParentScroll="true">
 
     <RelativeLayout
@@ -18,20 +14,20 @@
         android:background="#6889ff">
 
         <ImageView
-            android:id="@+id/summoner_iv"
+            android:id="@+id/image_view"
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:layout_margin="5dp"
             android:scaleType="fitXY"
-            android:src="@drawable/jinx" />
+            android:src="@drawable/two" />
 
         <TextView
-            android:id="@+id/summoner"
+            android:id="@+id/text_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
-            android:layout_toRightOf="@+id/summoner_iv"
-            android:text="@string/jinx"
+            android:layout_toRightOf="@+id/image_view"
+            android:text="@string/title"
             android:textColor="@android:color/white"
             android:textSize="18sp" />
 
@@ -39,12 +35,12 @@
             android:id="@+id/label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/summoner"
+            android:layout_below="@+id/text_view"
             android:layout_centerVertical="true"
             android:layout_marginLeft="5dp"
             android:layout_marginTop="10dp"
-            android:layout_toRightOf="@+id/summoner_iv"
-            android:text="@string/jinx_label"
+            android:layout_toRightOf="@+id/image_view"
+            android:text="Show description"
             android:textColor="@android:color/white" />
 
     </RelativeLayout>
@@ -57,14 +53,6 @@
         android:padding="10dp">
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Background"
-            android:textColor="@android:color/white"
-            android:textSize="16sp" />
-
-        <TextView
-            android:id="@+id/summoner_story_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/jinx_story"

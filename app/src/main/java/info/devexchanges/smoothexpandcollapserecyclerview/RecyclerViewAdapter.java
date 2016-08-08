@@ -8,22 +8,24 @@ import android.view.ViewGroup;
 
 import java.util.HashSet;
 
-public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.SummonerHolder> {
+public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ReyclerViewHolder> {
     private LayoutInflater layoutInflater;
-    private HashSet<Integer> mExpandedPositionSet = new HashSet<>();
+    private HashSet<Integer> expandedPositionSet;
 
     public RecyclerViewAdapter(Context context) {
         this.layoutInflater = LayoutInflater.from(context);
+        expandedPositionSet = new HashSet<>();
     }
 
     @Override
-    public SummonerHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View item = layoutInflater.inflate(viewType == 0 ? R.layout.item_odd : R.layout.item_jinx, parent, false);
-        return new SummonerHolder(item);
+    public ReyclerViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        View item = layoutInflater.inflate(viewType == 0 ? R.layout.item_odd : R.layout.item_even, parent, false);
+
+        return new ReyclerViewHolder(item);
     }
 
     @Override
-    public void onBindViewHolder(SummonerHolder holder, int position) {
+    public void onBindViewHolder(ReyclerViewHolder holder, int position) {
         holder.updateItem(position);
     }
 
@@ -37,12 +39,12 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         return 20;
     }
 
-    class SummonerHolder extends RecyclerView.ViewHolder {
+    class ReyclerViewHolder extends RecyclerView.ViewHolder {
         private ExpandableLayout expandableLayout;
 
-        private SummonerHolder(final View itemView) {
-            super(itemView);
-            expandableLayout = (ExpandableLayout) itemView.findViewById(R.id.expandable_layout);
+        private ReyclerViewHolder(final View view) {
+            super(view);
+            expandableLayout = (ExpandableLayout) view.findViewById(R.id.expandable_layout);
         }
 
         private void updateItem(final int position) {
@@ -52,13 +54,13 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                     registerExpand(position);
                 }
             });
-            expandableLayout.setExpand(mExpandedPositionSet.contains(position));
+            expandableLayout.setExpand(expandedPositionSet.contains(position));
 
         }
     }
 
     private void registerExpand(int position) {
-        if (mExpandedPositionSet.contains(position)) {
+        if (expandedPositionSet.contains(position)) {
             removeExpand(position);
         } else {
             addExpand(position);
@@ -66,11 +68,10 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     }
 
     private void removeExpand(int position) {
-        mExpandedPositionSet.remove(position);
+        expandedPositionSet.remove(position);
     }
 
     private void addExpand(int position) {
-        mExpandedPositionSet.add(position);
+        expandedPositionSet.add(position);
     }
-
 }
