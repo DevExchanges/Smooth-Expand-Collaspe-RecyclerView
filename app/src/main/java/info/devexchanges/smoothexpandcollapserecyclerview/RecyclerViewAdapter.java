@@ -5,16 +5,20 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.HashSet;
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ReyclerViewHolder> {
     private LayoutInflater layoutInflater;
     private HashSet<Integer> expandedPositionSet;
+    private Context context;
 
     public RecyclerViewAdapter(Context context) {
         this.layoutInflater = LayoutInflater.from(context);
         expandedPositionSet = new HashSet<>();
+        this.context = context;
     }
 
     @Override
@@ -41,17 +45,19 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     class ReyclerViewHolder extends RecyclerView.ViewHolder {
         private ExpandableLayout expandableLayout;
+        private TextView showInfo;
 
         private ReyclerViewHolder(final View view) {
             super(view);
             expandableLayout = (ExpandableLayout) view.findViewById(R.id.expandable_layout);
+            showInfo = (TextView) view.findViewById(R.id.show_info);
         }
 
         private void updateItem(final int position) {
             expandableLayout.setOnExpandListener(new ExpandableLayout.OnExpandListener() {
                 @Override
                 public void onExpand(boolean expanded) {
-                    registerExpand(position);
+                    registerExpand(position, showInfo);
                 }
             });
             expandableLayout.setExpand(expandedPositionSet.contains(position));
@@ -59,11 +65,17 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         }
     }
 
-    private void registerExpand(int position) {
+    private void registerExpand(int position, TextView textView) {
         if (expandedPositionSet.contains(position)) {
             removeExpand(position);
+            textView.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.arrow_down, 0);
+            textView.setText("Show description");
+            Toast.makeText(context, "Position: " + position + " collapsed!", Toast.LENGTH_SHORT).show();
         } else {
             addExpand(position);
+            textView.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.arrow_up, 0);
+            textView.setText("Hide description");
+            Toast.makeText(context, "Position: " + position + " expanded!", Toast.LENGTH_SHORT).show();
         }
     }
 
